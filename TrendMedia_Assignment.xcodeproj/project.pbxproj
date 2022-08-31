@@ -15,6 +15,7 @@
 		9836190D28BEE19200722EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9836190B28BEE19200722EC0 /* LaunchScreen.storyboard */; };
 		98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A228BEE3B000405BBC /* CodingTipViewController.swift */; };
 		98F766A528BF06CF00405BBC /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A428BF06CF00405BBC /* SettingTableViewController.swift */; };
+		98F766A728BF20A100405BBC /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F766A628BF20A100405BBC /* Setting.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9836190E28BEE19200722EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98F766A228BEE3B000405BBC /* CodingTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTipViewController.swift; sourceTree = "<group>"; };
 		98F766A428BF06CF00405BBC /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		98F766A628BF20A100405BBC /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				9836190228BEE18D00722EC0 /* SceneDelegate.swift */,
 				9836190428BEE18D00722EC0 /* ViewController.swift */,
 				9836190628BEE18D00722EC0 /* Main.storyboard */,
+				98F766A628BF20A100405BBC /* Setting.storyboard */,
 				98F766A428BF06CF00405BBC /* SettingTableViewController.swift */,
 				98F766A228BEE3B000405BBC /* CodingTipViewController.swift */,
 				9836190928BEE19200722EC0 /* Assets.xcassets */,
@@ -134,6 +137,7 @@
 				9836190D28BEE19200722EC0 /* LaunchScreen.storyboard in Resources */,
 				9836190A28BEE19200722EC0 /* Assets.xcassets in Resources */,
 				9836190828BEE18D00722EC0 /* Main.storyboard in Resources */,
+				98F766A728BF20A100405BBC /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
