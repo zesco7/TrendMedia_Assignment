@@ -18,8 +18,12 @@
 		98C381AD28C0426E003CFB09 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381AC28C0426E003CFB09 /* ShoppingTableViewCell.swift */; };
 		98C381B228C05395003CFB09 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B128C05395003CFB09 /* SearchTableViewController.swift */; };
 		98C381B428C053AA003CFB09 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B328C053AA003CFB09 /* SearchTableViewCell.swift */; };
-		98C381B628C056B0003CFB09 /* SearchMovieInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B528C056B0003CFB09 /* SearchMovieInformation.swift */; };
 		98C381B828C07033003CFB09 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B728C07033003CFB09 /* Movie.swift */; };
+		98C381BA28C0D8FB003CFB09 /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B928C0D8FB003CFB09 /* MovieInfo.swift */; };
+		98C381BD28C0DF6C003CFB09 /* RecommendationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381BC28C0DF6C003CFB09 /* RecommendationCollectionViewController.swift */; };
+		98C381BF28C0E226003CFB09 /* RecommendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381BE28C0E226003CFB09 /* RecommendationCollectionViewCell.swift */; };
+		98C381C228C0EAF3003CFB09 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 98C381C128C0EAF3003CFB09 /* Toast */; };
+		98C381C528C0EB0D003CFB09 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 98C381C428C0EB0D003CFB09 /* Kingfisher */; };
 		98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A228BEE3B000405BBC /* CodingTipViewController.swift */; };
 		98F766A528BF06CF00405BBC /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A428BF06CF00405BBC /* SettingTableViewController.swift */; };
 		98F766A728BF20A100405BBC /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F766A628BF20A100405BBC /* Setting.storyboard */; };
@@ -49,8 +53,10 @@
 		98C381AC28C0426E003CFB09 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		98C381B128C05395003CFB09 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		98C381B328C053AA003CFB09 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		98C381B528C056B0003CFB09 /* SearchMovieInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieInformation.swift; sourceTree = "<group>"; };
 		98C381B728C07033003CFB09 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		98C381B928C0D8FB003CFB09 /* MovieInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
+		98C381BC28C0DF6C003CFB09 /* RecommendationCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCollectionViewController.swift; sourceTree = "<group>"; };
+		98C381BE28C0E226003CFB09 /* RecommendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		98F766A228BEE3B000405BBC /* CodingTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTipViewController.swift; sourceTree = "<group>"; };
 		98F766A428BF06CF00405BBC /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		98F766A628BF20A100405BBC /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98C381C528C0EB0D003CFB09 /* Kingfisher in Frameworks */,
+				98C381C228C0EAF3003CFB09 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +109,7 @@
 				9836190428BEE18D00722EC0 /* ViewController.swift */,
 				98F766B228BFA02D00405BBC /* TrendViewController.swift */,
 				98C381B028C04830003CFB09 /* Search */,
-				98F766AC28BF5CF200405BBC /* Trend.storyboard */,
+				98C381BB28C0DF35003CFB09 /* Trend */,
 				98C381AB28C04241003CFB09 /* Shopping */,
 				98C381AE28C047FA003CFB09 /* BucketList */,
 				98F766AE28BF5CF900405BBC /* Intro.storyboard */,
@@ -152,10 +160,20 @@
 				98F766B028BF9FEC00405BBC /* SearchViewController.swift */,
 				98C381B128C05395003CFB09 /* SearchTableViewController.swift */,
 				98C381B328C053AA003CFB09 /* SearchTableViewCell.swift */,
-				98C381B528C056B0003CFB09 /* SearchMovieInformation.swift */,
+				98C381B928C0D8FB003CFB09 /* MovieInfo.swift */,
 				98C381B728C07033003CFB09 /* Movie.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		98C381BB28C0DF35003CFB09 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				98F766AC28BF5CF200405BBC /* Trend.storyboard */,
+				98C381BC28C0DF6C003CFB09 /* RecommendationCollectionViewController.swift */,
+				98C381BE28C0E226003CFB09 /* RecommendationCollectionViewCell.swift */,
+			);
+			path = Trend;
 			sourceTree = "<group>";
 		};
 		98F766BA28BFC81400405BBC /* Extension */ = {
@@ -183,6 +201,10 @@
 			dependencies = (
 			);
 			name = TrendMedia_Assignment;
+			packageProductDependencies = (
+				98C381C128C0EAF3003CFB09 /* Toast */,
+				98C381C428C0EB0D003CFB09 /* Kingfisher */,
+			);
 			productName = TrendMedia_Assignment;
 			productReference = 983618FD28BEE18D00722EC0 /* TrendMedia_Assignment.app */;
 			productType = "com.apple.product-type.application";
@@ -211,6 +233,10 @@
 				Base,
 			);
 			mainGroup = 983618F428BEE18C00722EC0;
+			packageReferences = (
+				98C381C028C0EAF3003CFB09 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				98C381C328C0EB0D003CFB09 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 983618FE28BEE18D00722EC0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,16 +270,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				98F766B528BFA0BD00405BBC /* UIViewController+Extension.swift in Sources */,
+				98C381BF28C0E226003CFB09 /* RecommendationCollectionViewCell.swift in Sources */,
 				98F766B328BFA02D00405BBC /* TrendViewController.swift in Sources */,
 				98C381B828C07033003CFB09 /* Movie.swift in Sources */,
 				98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */,
+				98C381BD28C0DF6C003CFB09 /* RecommendationCollectionViewController.swift in Sources */,
 				98F766B128BF9FEC00405BBC /* SearchViewController.swift in Sources */,
 				98F766A928BF47DF00405BBC /* RightDetailTableViewController.swift in Sources */,
 				98C381AD28C0426E003CFB09 /* ShoppingTableViewCell.swift in Sources */,
 				98F766B928BFC76700405BBC /* UITextField+Extension.swift in Sources */,
 				98C381B228C05395003CFB09 /* SearchTableViewController.swift in Sources */,
-				98C381B628C056B0003CFB09 /* SearchMovieInformation.swift in Sources */,
 				98C381AA28C04239003CFB09 /* ShoppingTableViewController.swift in Sources */,
+				98C381BA28C0D8FB003CFB09 /* MovieInfo.swift in Sources */,
 				9836190528BEE18D00722EC0 /* ViewController.swift in Sources */,
 				9836190128BEE18D00722EC0 /* AppDelegate.swift in Sources */,
 				9836190328BEE18D00722EC0 /* SceneDelegate.swift in Sources */,
@@ -476,6 +504,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		98C381C028C0EAF3003CFB09 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		98C381C328C0EB0D003CFB09 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		98C381C128C0EAF3003CFB09 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98C381C028C0EAF3003CFB09 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		98C381C428C0EB0D003CFB09 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98C381C328C0EB0D003CFB09 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 983618F528BEE18C00722EC0 /* Project object */;
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bAf-md-Us2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8XM-IX-PqO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -135,6 +136,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vba-MF-UV5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="842.02898550724649" y="79.6875"/>
+        </scene>
+        <!--Recommendation Collection View Controller-->
+        <scene sceneID="mt5-x0-dS4">
+            <objects>
+                <collectionViewController id="8XM-IX-PqO" customClass="RecommendationCollectionViewController" customModule="TrendMedia_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="0Ms-Fz-chW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="6Kt-kY-Kjt">
+                            <size key="itemSize" width="10" height="10"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="50" minY="50" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendationCollectionViewCell" id="p7p-QT-gGA" customClass="RecommendationCollectionViewCell" customModule="TrendMedia_Assignment" customModuleProvider="target">
+                                <rect key="frame" x="123.5" y="50" width="217" height="267"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J7C-PH-GBU">
+                                    <rect key="frame" x="0.0" y="0.0" width="217" height="267"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dYi-9f-giY">
+                                            <rect key="frame" x="0.0" y="0.0" width="217" height="267"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="dYi-9f-giY" secondAttribute="trailing" id="15A-Je-c9y"/>
+                                        <constraint firstAttribute="bottom" secondItem="dYi-9f-giY" secondAttribute="bottom" id="D3c-4M-UYi"/>
+                                        <constraint firstItem="dYi-9f-giY" firstAttribute="top" secondItem="J7C-PH-GBU" secondAttribute="top" id="glB-3w-bBm"/>
+                                        <constraint firstItem="dYi-9f-giY" firstAttribute="leading" secondItem="J7C-PH-GBU" secondAttribute="leading" id="zQs-bA-cW6"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="217" height="267"/>
+                                <connections>
+                                    <outlet property="movieImageView" destination="dYi-9f-giY" id="Agd-yi-ACK"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="8XM-IX-PqO" id="g3l-P0-tHv"/>
+                            <outlet property="delegate" destination="8XM-IX-PqO" id="b82-tS-1CL"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="luX-iC-9Wv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1769.5652173913045" y="79.6875"/>
         </scene>
     </scenes>
     <resources>

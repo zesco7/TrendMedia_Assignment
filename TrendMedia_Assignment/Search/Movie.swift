@@ -7,10 +7,11 @@
 
 import Foundation
 
+//MovieInfo파일 parameter와 구조체 변수명을 맞춰준다.
 struct Movie {
-    var movieTitle: String
-    var movieRelease: String
-    var movieOverview: String
-    var movieRuntime: Int
-    var movieRate: Double
+    var title: String
+    var releaseDate: String
+    var runtime: Int
+    var overview: String
+    var rate: Double
 }

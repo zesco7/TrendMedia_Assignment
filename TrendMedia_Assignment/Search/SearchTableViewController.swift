@@ -13,30 +13,28 @@ import UIKit
  */
 
 class SearchTableViewController: UITableViewController {
-    
-    
+    //MovieInfo는 초기화 해야하는 프로퍼티가 없기 때문에 매개변수가 없다.(MovieInfo파일에 값이 이미 초기화되어 있음)
+    var movieList = MovieInfo()
     var movieTitleList = ["해리포터1", "해리포터2", "해리포터3", "해리포터4", "해리포터5", "해리포터6", "해리포터7", "해리포터8"]
     var movieOpeningDayList = ["2022-01-01", "2022-02-01", "2022-03-01", "2022-04-01", "2022-05-01", "2022-06-01", "2022-07-01", "2022-08-01"]
     var movieStoryList = ["1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return movieTitleList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //MovieInfo Struct에 Movie배열을 가지고 있기 때문에 배열count사용 가능(구조체이름이나 배열이름이 아니라 대입된 변수로 접근)
+        return movieList.movie.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-        //cell.moviePoster.image = moviePosterList[indexPath.row]
-        cell.moviePosterImageView.image = UIImage(named: "극한직업")
-        cell.movieTitleLabel.text = movieTitleList[indexPath.row]
-        cell.movieOpeningDayLabel.text = movieOpeningDayList[indexPath.row]
-        cell.movieStoryLabel.text = movieStoryList[indexPath.row]
+        //cell을 재사용할 때마다 configureCell을 호출하여 cell마다 함수에 정해진 속성을 이용한다.
+        let data = movieList.movie[indexPath.row]
+        cell.configureCell(data: data)
         
         return cell
     }
@@ -46,5 +44,5 @@ class SearchTableViewController: UITableViewController {
         return UIScreen.main.bounds.height / 8
     }
     
-
-    }
+    
+}
