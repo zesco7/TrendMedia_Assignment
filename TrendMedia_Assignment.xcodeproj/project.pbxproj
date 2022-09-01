@@ -13,9 +13,22 @@
 		9836190828BEE18D00722EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9836190628BEE18D00722EC0 /* Main.storyboard */; };
 		9836190A28BEE19200722EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9836190928BEE19200722EC0 /* Assets.xcassets */; };
 		9836190D28BEE19200722EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9836190B28BEE19200722EC0 /* LaunchScreen.storyboard */; };
+		98C381A828C04207003CFB09 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98C381A728C04207003CFB09 /* Shopping.storyboard */; };
+		98C381AA28C04239003CFB09 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381A928C04239003CFB09 /* ShoppingTableViewController.swift */; };
+		98C381AD28C0426E003CFB09 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381AC28C0426E003CFB09 /* ShoppingTableViewCell.swift */; };
 		98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A228BEE3B000405BBC /* CodingTipViewController.swift */; };
 		98F766A528BF06CF00405BBC /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A428BF06CF00405BBC /* SettingTableViewController.swift */; };
 		98F766A728BF20A100405BBC /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F766A628BF20A100405BBC /* Setting.storyboard */; };
+		98F766A928BF47DF00405BBC /* RightDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A828BF47DF00405BBC /* RightDetailTableViewController.swift */; };
+		98F766AB28BF5CEB00405BBC /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F766AA28BF5CEB00405BBC /* Search.storyboard */; };
+		98F766AD28BF5CF200405BBC /* Trend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F766AC28BF5CF200405BBC /* Trend.storyboard */; };
+		98F766AF28BF5CF900405BBC /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F766AE28BF5CF900405BBC /* Intro.storyboard */; };
+		98F766B128BF9FEC00405BBC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766B028BF9FEC00405BBC /* SearchViewController.swift */; };
+		98F766B328BFA02D00405BBC /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766B228BFA02D00405BBC /* TrendViewController.swift */; };
+		98F766B528BFA0BD00405BBC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766B428BFA0BD00405BBC /* UIViewController+Extension.swift */; };
+		98F766B928BFC76700405BBC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766B828BFC76700405BBC /* UITextField+Extension.swift */; };
+		98F766BC28BFCA8300405BBC /* BucketListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766BB28BFCA8300405BBC /* BucketListTableViewController.swift */; };
+		98F766BE28BFCD4100405BBC /* BucketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766BD28BFCD4100405BBC /* BucketListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +40,22 @@
 		9836190928BEE19200722EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9836190C28BEE19200722EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9836190E28BEE19200722EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98C381A728C04207003CFB09 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
+		98C381A928C04239003CFB09 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
+		98C381AC28C0426E003CFB09 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		98F766A228BEE3B000405BBC /* CodingTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTipViewController.swift; sourceTree = "<group>"; };
 		98F766A428BF06CF00405BBC /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		98F766A628BF20A100405BBC /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		98F766A828BF47DF00405BBC /* RightDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewController.swift; sourceTree = "<group>"; };
+		98F766AA28BF5CEB00405BBC /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		98F766AC28BF5CF200405BBC /* Trend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trend.storyboard; sourceTree = "<group>"; };
+		98F766AE28BF5CF900405BBC /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		98F766B028BF9FEC00405BBC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		98F766B228BFA02D00405BBC /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
+		98F766B428BFA0BD00405BBC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		98F766B828BFC76700405BBC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		98F766BB28BFCA8300405BBC /* BucketListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewController.swift; sourceTree = "<group>"; };
+		98F766BD28BFCD4100405BBC /* BucketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,15 +91,68 @@
 				9836190028BEE18D00722EC0 /* AppDelegate.swift */,
 				9836190228BEE18D00722EC0 /* SceneDelegate.swift */,
 				9836190428BEE18D00722EC0 /* ViewController.swift */,
+				98F766B228BFA02D00405BBC /* TrendViewController.swift */,
+				98C381B028C04830003CFB09 /* Search */,
+				98F766AC28BF5CF200405BBC /* Trend.storyboard */,
+				98C381AB28C04241003CFB09 /* Shopping */,
+				98C381AE28C047FA003CFB09 /* BucketList */,
+				98F766AE28BF5CF900405BBC /* Intro.storyboard */,
+				98C381AF28C04821003CFB09 /* Setting */,
 				9836190628BEE18D00722EC0 /* Main.storyboard */,
-				98F766A628BF20A100405BBC /* Setting.storyboard */,
-				98F766A428BF06CF00405BBC /* SettingTableViewController.swift */,
+				98F766A828BF47DF00405BBC /* RightDetailTableViewController.swift */,
+				98F766BA28BFC81400405BBC /* Extension */,
 				98F766A228BEE3B000405BBC /* CodingTipViewController.swift */,
 				9836190928BEE19200722EC0 /* Assets.xcassets */,
 				9836190B28BEE19200722EC0 /* LaunchScreen.storyboard */,
 				9836190E28BEE19200722EC0 /* Info.plist */,
 			);
 			path = TrendMedia_Assignment;
+			sourceTree = "<group>";
+		};
+		98C381AB28C04241003CFB09 /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				98C381A728C04207003CFB09 /* Shopping.storyboard */,
+				98C381A928C04239003CFB09 /* ShoppingTableViewController.swift */,
+				98C381AC28C0426E003CFB09 /* ShoppingTableViewCell.swift */,
+			);
+			path = Shopping;
+			sourceTree = "<group>";
+		};
+		98C381AE28C047FA003CFB09 /* BucketList */ = {
+			isa = PBXGroup;
+			children = (
+				98F766BB28BFCA8300405BBC /* BucketListTableViewController.swift */,
+				98F766BD28BFCD4100405BBC /* BucketListTableViewCell.swift */,
+			);
+			path = BucketList;
+			sourceTree = "<group>";
+		};
+		98C381AF28C04821003CFB09 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				98F766A628BF20A100405BBC /* Setting.storyboard */,
+				98F766A428BF06CF00405BBC /* SettingTableViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		98C381B028C04830003CFB09 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				98F766AA28BF5CEB00405BBC /* Search.storyboard */,
+				98F766B028BF9FEC00405BBC /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		98F766BA28BFC81400405BBC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				98F766B828BFC76700405BBC /* UITextField+Extension.swift */,
+				98F766B428BFA0BD00405BBC /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +215,12 @@
 			files = (
 				9836190D28BEE19200722EC0 /* LaunchScreen.storyboard in Resources */,
 				9836190A28BEE19200722EC0 /* Assets.xcassets in Resources */,
+				98C381A828C04207003CFB09 /* Shopping.storyboard in Resources */,
 				9836190828BEE18D00722EC0 /* Main.storyboard in Resources */,
 				98F766A728BF20A100405BBC /* Setting.storyboard in Resources */,
+				98F766AD28BF5CF200405BBC /* Trend.storyboard in Resources */,
+				98F766AF28BF5CF900405BBC /* Intro.storyboard in Resources */,
+				98F766AB28BF5CEB00405BBC /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,11 +231,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F766B528BFA0BD00405BBC /* UIViewController+Extension.swift in Sources */,
+				98F766B328BFA02D00405BBC /* TrendViewController.swift in Sources */,
 				98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */,
+				98F766B128BF9FEC00405BBC /* SearchViewController.swift in Sources */,
+				98F766A928BF47DF00405BBC /* RightDetailTableViewController.swift in Sources */,
+				98C381AD28C0426E003CFB09 /* ShoppingTableViewCell.swift in Sources */,
+				98F766B928BFC76700405BBC /* UITextField+Extension.swift in Sources */,
+				98C381AA28C04239003CFB09 /* ShoppingTableViewController.swift in Sources */,
 				9836190528BEE18D00722EC0 /* ViewController.swift in Sources */,
 				9836190128BEE18D00722EC0 /* AppDelegate.swift in Sources */,
 				9836190328BEE18D00722EC0 /* SceneDelegate.swift in Sources */,
+				98F766BE28BFCD4100405BBC /* BucketListTableViewCell.swift in Sources */,
 				98F766A528BF06CF00405BBC /* SettingTableViewController.swift in Sources */,
+				98F766BC28BFCA8300405BBC /* BucketListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

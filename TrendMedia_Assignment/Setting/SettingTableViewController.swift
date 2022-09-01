@@ -21,6 +21,36 @@ import UIKit
  -. 빌드하면 헤더와 로우 들여쓰기가 다른 이유?
  */
 
+
+//CaseIterable: 열거형을 프로토콜이나 배열처럼 사용할 수 있는 특성
+enum SettingOptions: Int, CaseIterable {
+    case total, personal, others
+    
+    var sectionTitle: String {
+        switch self {
+    case .total:
+        return "전체 설정"
+    case .personal:
+        return "개인 설정"
+    case .others:
+        return "기타"
+        }
+    }
+    
+    var rowTitle: [String] {
+        switch self {
+    case .total:
+        return ["공지사항", "실험실", "버전 정보"]
+    case .personal:
+        return ["개인/보안", "알림", "채팅", "멀티프로필"]
+    case .others:
+        return ["고객센터/도움말"]
+        }
+    }
+}
+
+
+
 class SettingTableViewController: UITableViewController {
     
     var headerArray = ["전체 설정", "개인 설정", "기타"]
@@ -32,11 +62,13 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .black
+        tableView.rowHeight = 80
     }
     
     //section 갯수
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        //return 3
+        return SettingOptions.allCases.count //SettingOptions열거형에 있는 멤버 갯수를 배열길이처럼 사용한다.
     }
     
     //header 추가: 조건문을 통해 section마다 header 내용을 다르게 설정할 수 있다.
@@ -61,6 +93,7 @@ class SettingTableViewController: UITableViewController {
     
     //row 갯수: 조건문을 통해 section마다 row 갯수를 다르게 설정할 수 있다.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
             //row number를 arraycount와 짝을 맞춰주면 나중에 배열이 추가, 삭제되어도 자동으로 갯수 맞춰짐.
             return generalSettingArray.count
@@ -71,10 +104,24 @@ class SettingTableViewController: UITableViewController {
         } else {
             return 0
         }
+        
+        //
+        if section == 0 {
+            return SettingOptions.allCases[0].rowTitle.count
+        } else if section == 1 {
+            return SettingOptions.allCases[1].rowTitle.count
+        } else if section == 2 {
+            return SettingOptions.allCases[2].rowTitle.count
+        } else {
+            return 1
+        }
+        
+        return SettingOptions.allCases[section].rowTitle.count
     }
     
     //cell contents 설정: 조건문을 통해 row마다 cell contents를 다르게 설정할 수 있다.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cellForRowAt", indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell")!
         cell.backgroundColor = .black
         
@@ -99,5 +146,10 @@ class SettingTableViewController: UITableViewController {
         
         //return cell을 쓰는 이유? -> 속성 적용을 해주었으므로 속성이 적용된 변수를 반환해야 하기 때문이다.
         return cell
+    }
+    
+    //셀 높이 조정 함수: viewDidLoad에서 rowHeight 선언한 것보다 우선 적용됨
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
