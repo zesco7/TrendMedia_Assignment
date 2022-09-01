@@ -9,8 +9,8 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var moviePoster: UIImageView!
-    @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var movieOpeningDay: UILabel!
-    @IBOutlet weak var movieStory: UILabel!
+    @IBOutlet weak var moviePosterImageView: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieOpeningDayLabel: UILabel!
+    @IBOutlet weak var movieStoryLabel: UILabel!
 }
