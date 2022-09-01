@@ -9,7 +9,9 @@ import UIKit
 
 class ShoppingTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var checkBoxButton: UIButton!
-    @IBOutlet weak var buyList: UITextField!
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var checkBoxButton: UIImageView!
+    @IBOutlet weak var buyList: UILabel!
     @IBOutlet weak var starButton: UIButton!
+    
 }

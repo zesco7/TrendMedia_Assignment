@@ -19,6 +19,7 @@
 		98C381B228C05395003CFB09 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B128C05395003CFB09 /* SearchTableViewController.swift */; };
 		98C381B428C053AA003CFB09 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B328C053AA003CFB09 /* SearchTableViewCell.swift */; };
 		98C381B628C056B0003CFB09 /* SearchMovieInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B528C056B0003CFB09 /* SearchMovieInformation.swift */; };
+		98C381B828C07033003CFB09 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381B728C07033003CFB09 /* Movie.swift */; };
 		98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A228BEE3B000405BBC /* CodingTipViewController.swift */; };
 		98F766A528BF06CF00405BBC /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F766A428BF06CF00405BBC /* SettingTableViewController.swift */; };
 		98F766A728BF20A100405BBC /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F766A628BF20A100405BBC /* Setting.storyboard */; };
@@ -49,6 +50,7 @@
 		98C381B128C05395003CFB09 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		98C381B328C053AA003CFB09 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		98C381B528C056B0003CFB09 /* SearchMovieInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieInformation.swift; sourceTree = "<group>"; };
+		98C381B728C07033003CFB09 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		98F766A228BEE3B000405BBC /* CodingTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTipViewController.swift; sourceTree = "<group>"; };
 		98F766A428BF06CF00405BBC /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		98F766A628BF20A100405BBC /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				98C381B128C05395003CFB09 /* SearchTableViewController.swift */,
 				98C381B328C053AA003CFB09 /* SearchTableViewCell.swift */,
 				98C381B528C056B0003CFB09 /* SearchMovieInformation.swift */,
+				98C381B728C07033003CFB09 /* Movie.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				98F766B528BFA0BD00405BBC /* UIViewController+Extension.swift in Sources */,
 				98F766B328BFA02D00405BBC /* TrendViewController.swift in Sources */,
+				98C381B828C07033003CFB09 /* Movie.swift in Sources */,
 				98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */,
 				98F766B128BF9FEC00405BBC /* SearchViewController.swift in Sources */,
 				98F766A928BF47DF00405BBC /* RightDetailTableViewController.swift in Sources */,
