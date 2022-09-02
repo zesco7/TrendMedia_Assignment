@@ -14,12 +14,22 @@ import Toast
  -. 레이아웃 설정: UICollectionViewFlowLayout사용하여 셀크기,간격 잡기
  -. 네트워크로 이미지 가져오기: kingfisher사용하여 이미지url에 있는 이미지 불러오기
  */
+
 class RecommendationCollectionViewController: UICollectionViewController {
     
     static var identifier = "RecommendationCollectionViewController"
+    
+    //1. SearchTVC -> RecommendationCV 값 전달: 데이터 받을 공간(프로퍼티) 생성(변수 또는 구조체)
+    var cinemaTitle: String? //RecommendationCV에서 NavigationTitle로 사용됨
+    var cinemaData: Movie?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //3. SearchTVC -> RecommendationCV 값 전달: 프로퍼티 값을 뷰에 표현(변수 또는 구조체)
+        title = cinemaTitle == nil ? "데이터 없음" : cinemaTitle!
+        title = cinemaData?.title
         
         //콜렉션뷰의 셀 크기, 셀 간격 설정
         let layout = UICollectionViewFlowLayout()

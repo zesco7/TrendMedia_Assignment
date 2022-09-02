@@ -24,6 +24,10 @@ class TrendTableViewController: UITableViewController {
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: BucketListTableViewController.identifier) as! BucketListTableViewController
         
+        //2. TrendTVC -> BucketListTVC 값 전달: 프로퍼티에 데이터추가
+        vc.textFieldPlaceholder = "영화이름을 입력해주세요"
+        
+        
         self.present(vc, animated: true)
     }
     
@@ -33,7 +37,11 @@ class TrendTableViewController: UITableViewController {
         let vc = sb.instantiateViewController(withIdentifier: BucketListTableViewController.identifier) as! BucketListTableViewController
         vc.modalPresentationStyle = .fullScreen //fullscreen presentation
         
-        self.present(vc, animated: true)
+        //2. TrendTVC -> BucketListTVC 값 전달: 프로퍼티에 데이터추가
+        //vc.textFieldPlaceholder = "드라마이름을 입력해주세요"
+        vc.textFieldPlaceholder = sender.currentTitle
+        
+        self.present(vc, animated: true) //뷰컨트롤러를 present했으나 NavigationController를 스토리보드로 구현한 경우라도 naviitem 표시안됨.(스토리보드에 연결되어 있어도 코드로 구현해주어야함)
     }
     
     //navigation controller 연결해서 화면전환: navigation item사용 가능
@@ -42,6 +50,9 @@ class TrendTableViewController: UITableViewController {
         let vc = sb.instantiateViewController(withIdentifier: BucketListTableViewController.identifier) as! BucketListTableViewController
         let navi = UINavigationController(rootViewController: vc) //코드로 vc에 navigation controller 추가
         navi.modalPresentationStyle = .fullScreen //navigation controller에 fullscreen presentation 옵션 추가
+        
+        //2. TrendTVC -> BucketListTVC 값 전달: 프로퍼티에 데이터추가
+        vc.textFieldPlaceholder = "책이름을 입력해주세요"
         
         self.present(navi, animated: true) //navi를 present하면 연결된 root뷰인 vc가 나옴
     }

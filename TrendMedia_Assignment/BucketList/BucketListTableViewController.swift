@@ -15,6 +15,12 @@ class BucketListTableViewController: UITableViewController {
     
     var list = ["범죄도시2", "탑건", "토르"]
     
+    //1. TrendTVC -> BucketListTVC 값 전달: 프로퍼티 생성
+    //옵셔널 스트링타입이더라도 오류 없는 이유?
+    //placeholder자체가 옵셔널이라면?
+    //string interpolation을 사용한다면?
+    var textFieldPlaceholder: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +29,10 @@ class BucketListTableViewController: UITableViewController {
         
         navigationItem.title = "버킷리스트"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
+        
+        //3. TrendTVC -> BucketListTVC 값 전달: 프로퍼티 값을 뷰에 표현
+        userTextField.placeholder = textFieldPlaceholder
+        userTextField.placeholder = "\(textFieldPlaceholder ?? "영화")를 입력해보세요"
     }
     
     @objc

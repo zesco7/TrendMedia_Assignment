@@ -11,12 +11,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        //true이면 ViewController, false면 SearchTableViewController 불러오기
+        UserDefaults.standard.set(false, forKey: "First") //SceneDelegate 아닌 다른 화면에 배치야하 한다.
+    
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        
+        if UserDefaults.standard.bool(forKey: "First") {
+            let sb = UIStoryboard(name: "Trend", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            window?.rootViewController = vc //윈도우에 뷰컨트롤러를 루트뷰로 사용하겠다
+        } else {
+            let sb = UIStoryboard(name: "Search", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
+            window?.rootViewController = vc //윈도우에 뷰컨트롤러를 루트뷰로 사용하겠다
+            //window?.rootViewController = UINavigationController(rootViewController: vc) //네비게이션 컨트롤러 추가된 vc 표시 가능
+        }
+        window?.makeKeyAndVisible() //rootViewController인 vc를 시작화면에 보여줌
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
