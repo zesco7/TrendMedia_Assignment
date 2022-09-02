@@ -9,6 +9,7 @@ import UIKit
 
 class BucketListTableViewController: UITableViewController {
     
+    static var identifier = "BucketListTableViewController"
     
     @IBOutlet weak var userTextField: UITextField!
     
@@ -19,6 +20,14 @@ class BucketListTableViewController: UITableViewController {
         
         list.append("마녀")
         list.append("헤어질 결심")
+        
+        navigationItem.title = "버킷리스트"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
+    }
+    
+    @objc
+    func closeButtonClicked() {
+        self.dismiss(animated: true) //TrendTableViewController에 연결되어 있던 본인을 dismiss처리한다. 그러면 시작화면이었던 TrendTableViewController로 화면전환된다.
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,9 +70,26 @@ class BucketListTableViewController: UITableViewController {
      -. 특정 section, row에만 따로 적용할 수도 있다. reloadSections, reloadRows
      */
     @IBAction func userTextFieldReturn(_ sender: UITextField) {
-        list.append(sender.text!) //sender인 텍스트필드값을 list배열에 추가
         
-        tableView.reloadData() //테이블뷰 갱신
+        //case2. if let 옵셔널 바인딩 사용하여 배열 추가하면 sender.text!처럼 강제해제 해줄필요 없음
+        if let value = sender.text {
+            list.append(value)
+            tableView.reloadData()
+        } else {
+            //토스트 메시지 띄우기
+        }
+        
+        /*
+        //case3. guard let
+        guard let vvalue != sender.text else {
+            //alert, toast통해 정보를 사용자에게 알려줘야 한다.(ex. 빈값입니다, 글자수가 많습니다 등)
+            return
+        }
+        */
+        
+        //case1. 강제 해제
+        //list.append(sender.text!) //sender인 텍스트필드값을 list배열에 추가
+        //tableView.reloadData() //테이블뷰 갱신
         //tableView.reloadSections(IndexSet, with: <#T##UITableView.RowAnimation#>)
         //tableView.reloadRows(at: [IndexPath(row: 0, section: 0), IndexPath(row: 1, section: 0)], with: .fade)
         print(list)

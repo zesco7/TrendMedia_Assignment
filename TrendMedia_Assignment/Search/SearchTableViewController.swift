@@ -45,4 +45,16 @@ class SearchTableViewController: UITableViewController {
     }
     
     
+    /*didSelectRowAt가 동작하지 않는 경우
+     1. tableView에서 selection옵션이 noselection으로 설정되어 있어서 선택이 안됨
+     2. 셀 위에 전체버튼 있어서 셀을 누르는게 아니라 실제로는 버튼을 누르는 상태
+     */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Trend", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: RecommendationCollectionViewController.identifier) as! RecommendationCollectionViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true) //vc에 navigationController연결을 해주어야 화면이 push된다.(안되어 있으면 optional조건에 의해 push안됨.)
+    }
+    
+    
 }

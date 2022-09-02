@@ -15,6 +15,8 @@ import Toast
  -. 네트워크로 이미지 가져오기: kingfisher사용하여 이미지url에 있는 이미지 불러오기
  */
 class RecommendationCollectionViewController: UICollectionViewController {
+    
+    static var identifier = "RecommendationCollectionViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,8 @@ class RecommendationCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //collectionView선택시 토스트 표시
         view.makeToast("\(indexPath)번째 셀을 선택했습니다", duration: 1, position: .center)
-    
+        
+        self.navigationController?.popViewController(animated: true)
     }
+    
 }
