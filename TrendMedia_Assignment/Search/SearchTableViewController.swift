@@ -26,10 +26,10 @@ class SearchTableViewController: UITableViewController {
         
     }
     
-    @objc //iOS13이상에서 SceneDelegate 쓸 때 동작하는 코드
+    @objc //iOS13이상에서 SceneDelegate 쓸 때 동작하는 코드: 특정화면으로 화면을 전환시킬 수 있는 코드
     func resetButtonClicked() {
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene //앱을 처음부르는 코드
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate //
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene //앱을 처음켠상태로 만드는 코드
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
         
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
@@ -69,9 +69,9 @@ class SearchTableViewController: UITableViewController {
         //2. SearchTVC -> RecommendationCV 값 전달: vc가 가지고 있는 프로퍼티에 데이터 추가(변수 또는 구조체)
         let title = movieList.movie[indexPath.row].title //구조체 인스턴스에 접근하여 indexPath.row에 맞는 값 가져오기
         let release = movieList.movie[indexPath.row].releaseDate
-        vc.cinemaTitle = "\(title)(\(release))" //보간법으로 보여주려는 정보 동시에 표시
-        vc.cinemaData = movieList.movie[indexPath.row]
+        //vc.cinemaTitle = "\(title)(\(release))" //보간법으로 보여주려는 정보 동시에 표시
         //vc.cinemaTitle = "값 전달 확인" // vc인 RecommendationCV에 생성한 string타입 cinemaTitle프로퍼티에 값전달
+        vc.cinemaData = movieList.movie[indexPath.row]
         
         self.navigationController?.pushViewController(vc, animated: true) //vc에 navigationController연결을 해주어야 화면이 push된다.(안되어 있으면 optional조건에 의해 push안됨.)
     }

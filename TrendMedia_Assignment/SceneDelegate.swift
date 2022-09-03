@@ -7,6 +7,10 @@
 
 import UIKit
 
+/*질문
+ -. UserDefaults.standard.set(false, forKey: "First")을 SceneDelegate 파일이 아닌 다른 파일에 배치해야 하는 이유?
+ */
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -14,9 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         //true이면 ViewController, false면 SearchTableViewController 불러오기
-        UserDefaults.standard.set(false, forKey: "First") //SceneDelegate 아닌 다른 화면에 배치야하 한다.
+        UserDefaults.standard.set(false, forKey: "First") //SceneDelegate 파일이 아닌 다른 파일에 배치해야 한다.
     
-        guard let scene = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return } //scene은 현재 화면에 보이는 부분을 의미함
         window = UIWindow(windowScene: scene)
         
         if UserDefaults.standard.bool(forKey: "First") {
@@ -26,8 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             let sb = UIStoryboard(name: "Search", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
-            window?.rootViewController = vc //윈도우에 뷰컨트롤러를 루트뷰로 사용하겠다
-            //window?.rootViewController = UINavigationController(rootViewController: vc) //네비게이션 컨트롤러 추가된 vc 표시 가능
+            //window?.rootViewController = vc
+            window?.rootViewController = UINavigationController(rootViewController: vc) //네비게이션 컨트롤러 추가된 vc 표시 가능
         }
         window?.makeKeyAndVisible() //rootViewController인 vc를 시작화면에 보여줌
     }

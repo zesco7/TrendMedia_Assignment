@@ -18,7 +18,7 @@ class BucketListTableViewController: UITableViewController {
     //1. TrendTVC -> BucketListTVC 값 전달: 프로퍼티 생성
     //옵셔널 스트링타입이더라도 오류 없는 이유?
     //placeholder자체가 옵셔널이라면?
-    //string interpolation을 사용한다면?
+    //string interpolation을 사용한다면? : string interpolation에는 nil이 올 수 없으므로 (textFieldPlaceholder ?? "영화")처럼 nil일 때 조건처리를 해주어야 한다.
     var textFieldPlaceholder: String?
     
     override func viewDidLoad() {
