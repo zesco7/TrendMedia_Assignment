@@ -7,13 +7,33 @@
 
 import UIKit
 
+struct Todo {
+    var title: String
+    var done: Bool
+}
+
 class BucketListTableViewController: UITableViewController {
     
     static var identifier = "BucketListTableViewController"
     
-    @IBOutlet weak var userTextField: UITextField!
+    //UITextField는 클래스이므로 클래스 자체가 변경되지 않는 이상 텍스트필드값이 변경되어도 처음 한번만 didSet이 호출됨(구조체는 변경될때마다 호출됨)
+    //@IBOutlet는 viewDidLoad호출 직전에 nil인지 아닌지 알 수 있음
+    @IBOutlet weak var userTextField: UITextField! {
+        didSet {
+            userTextField.textAlignment = .center
+            userTextField.font = .boldSystemFont(ofSize: 22)
+            userTextField.textColor = .systemRed
+            print("텍스트필드 didSet")
+        }
+    }
     
-    var list = ["범죄도시2", "탑건", "토르"]
+    //list프로퍼티가 추가, 삭제 될 때마다 테이블뷰를 항상 갱신해줘야 한다.(property observer사용)
+    var list = [Todo(title: "범죄도시", done: false), Todo(title: "탑건", done: false)] {
+        didSet {
+            tableView.reloadData()
+            print("list가 변경됨 \(list), \(oldValue)")
+        }
+    }
     
     //1. TrendTVC -> BucketListTVC 값 전달: 프로퍼티 생성
     //옵셔널 스트링타입이더라도 오류 없는 이유?
@@ -23,9 +43,9 @@ class BucketListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        list.append("마녀")
-        list.append("헤어질 결심")
+
+//        list.append("마녀")
+//        list.append("헤어질 결심")
         
         navigationItem.title = "버킷리스트"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonClicked))
@@ -44,29 +64,47 @@ class BucketListTableViewController: UITableViewController {
         return list.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { //화면 표현 속성을 바꾸는 건 cellForRowAt에 구현하는게 좋음
         //indexPath매개변수는 없어도 되지만 있으면 인덱스를 사용해서 셀마다 다른 값을 줄 수 있음.
         //tableView.dequeueReusableCell(withIdentifier: "BucketListTableViewCell", for: indexPath): 화면에서 셀 가져옴
         //as! BucketListTableViewCell: 가져온 셀을 클래스파일에 연결.
         let cell = tableView.dequeueReusableCell(withIdentifier: "BucketListTableViewCell", for: indexPath) as! BucketListTableViewCell
         
-        cell.bucketListLabel.text = list[indexPath.row]
+        cell.bucketListLabel.text = list[indexPath.row].title
         cell.bucketListLabel.font = .boldSystemFont(ofSize: 20)
+        
+        cell.checkboxButton.tag = indexPath.row //각 셀의 인덱스대로 태그 지정
+        cell.checkboxButton.addTarget(self, action: #selector(checkboxButtonClicked(sender:)), for: .touchUpInside) //함수타입인 (sender:) 까지 셀렉터에 전달해주는게 일반적임
+
+        let value = list[indexPath.row].done ? "checkmark.square.fill" : "checkmark.square"
+        cell.checkboxButton.setImage(UIImage(systemName: value), for: .normal)
         
         return cell
     }
     
+    @objc func checkboxButtonClicked(sender: UIButton) { //cell.checkboxButton.tag에서 태그를 매개변수로 받음
+        print("\(sender.tag)버튼클릭")
+        
+        //배열인덱스를 찾아서 done을 바꾸고 테이블 뷰 갱신하기
+        list[sender.tag].done = !list[sender.tag].done //반대값 대입
+        
+        //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade) //전체행이 아니라 선택행 데이터만 변경(데이터 관리를 효율적으로 할 수 있음)
+        
+        //sender.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal) //재사용 셀 오류확인용 코드
+    }
+    
+    
     //row수정 함수: 추가 구현해야 작동함
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-        
+         
     }
     
     //row삭제 함수: right to left로 swipe
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             list.remove(at: indexPath.row) //해당 index의 row 삭제
-            tableView.reloadData()
+            //tableView.reloadData()
         }
     }
     
@@ -82,12 +120,12 @@ class BucketListTableViewController: UITableViewController {
     @IBAction func userTextFieldReturn(_ sender: UITextField) {
         
         //case2. if let 옵셔널 바인딩 사용하여 배열 추가하면 sender.text!처럼 강제해제 해줄필요 없음
-        if let value = sender.text {
-            list.append(value)
-            tableView.reloadData()
-        } else {
+        //if let value = sender.text {
+            //list.append(value)
+            //tableView.reloadData()
+        //} else {
             //토스트 메시지 띄우기
-        }
+        //}
         
         /*
         //case3. guard let
@@ -99,6 +137,7 @@ class BucketListTableViewController: UITableViewController {
         
         //case1. 강제 해제
         //list.append(sender.text!) //sender인 텍스트필드값을 list배열에 추가
+        list.append(Todo(title: sender.text!, done: false))
         //tableView.reloadData() //테이블뷰 갱신
         //tableView.reloadSections(IndexSet, with: <#T##UITableView.RowAnimation#>)
         //tableView.reloadRows(at: [IndexPath(row: 0, section: 0), IndexPath(row: 1, section: 0)], with: .fade)
