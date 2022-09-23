@@ -2,111 +2,118 @@
 //  TheaterViewController.swift
 //  TrendMedia_Assignment
 //
-//  Created by Mac Pro 15 on 2022/09/22.
+//  Created by Mac Pro 15 on 2022/09/23.
 //
 
 import UIKit
+import CoreLocation
 import MapKit
 
-class TheaterViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
+
+/*질문
+ -.영화관 구조체 데이터에 어떻게 접근하도록 만드는지? 일일이 함수 작성하는 방식은 당연히 아닐 것 같은데 구조체에서 값을 접근하지 못하겠음
+ -.개별적으로 함수만든다고 쳐도 removeAnnotation 매개변수가 MKAnnotation타입인데 MKAnnotation을 넣을수가 없음
+ */
+
+/*지도 포인트
+ -.
+ 
+ */
+
+/*액션시트 포인트
+ -.액션시트 타이틀 없애려면 "" 대신 nil 대입
+ -.얼럿은 viewDidLoad에서 실행안되므로 viewDidAppear에서 실행
+ */
+
+class TheaterViewController: UIViewController {
+    static var identifier = "TheaterViewController"
     
     let locationManager = CLLocationManager()
-    let coornidateYDPcampus = CLLocationCoordinate2D(latitude: 37.517829, longitude: 126.886270) //취업사관학교 좌표
+    let theaterInfo = TheaterList()
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
+
+        centerRegion()
+        
+        setRegionAndAnnotation()
+        setRegionAndAnnotation2()
+        setRegionAndAnnotation3()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        showTheaterList()
         
     }
     
-    func setRegionAndAnnotation(center: CLLocationCoordinate2D) {
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
+    func centerRegion() {
+        let center = CLLocationCoordinate2D(latitude: 37.504942, longitude: 126.955041) //중앙대병원 좌표
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 15000, longitudinalMeters: 15000)
         mapView.setRegion(region, animated: true)
+    }
+    
+    func setRegionAndAnnotation() {
         
+        for data in
         let annotation = MKPointAnnotation()
+        let center = CLLocationCoordinate2D(latitude: latitude[0], longitude: longitude[0])
         annotation.coordinate = center
-        annotation.title = "지도 중심입니다."
+        annotation.title = location[0]
         mapView.addAnnotation(annotation)
     }
-}
+    
+    func setRegionAndAnnotation2() {
+        let location = theaterInfo.mapAnnotations.filter { $0.type == "메가박스" }.map { $0.location }
+        let latitude = theaterInfo.mapAnnotations.filter { $0.type == "메가박스" }.map { $0.latitude }
+        let longitude = theaterInfo.mapAnnotations.filter { $0.type == "메가박스" }.map { $0.longitude }
 
-//1. iOS버젼 확인 + 위치서비스 활성화 여부체크 + 위치권한 상태 확인 + 위치권한 거부시 얼럿
-extension TheaterViewController {
-    //iOS버젼 확인 + 위치서비스 활성화 여부체크
-    func checkUserDeviceLocationServiceAuthorization() {
-        let authorizationStatus: CLAuthorizationStatus
+        let annotation = MKPointAnnotation()
+        let center = CLLocationCoordinate2D(latitude: latitude[1], longitude: longitude[1])
         
-        if #available(iOS 14.0, *) { //iOS버젼 확인
-            authorizationStatus = locationManager.authorizationStatus //현재 위치서비스 활성화 상태
-        } else {
-            authorizationStatus = CLLocationManager.authorizationStatus()
-        }
-        
-        if CLLocationManager.locationServicesEnabled() { //위치서비스 활성화 여부체크
-            checkUserCurrentLocationAuthorization(authorizationStatus)
-        } else {
-            print("위치 서비스가 꺼져 있어서 권한 요청을 못합니다.")
-        }
-    }
-    
-    //위치권한 상태 확인
-    func checkUserCurrentLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
-        switch authorizationStatus {
-        case .notDetermined:
-            print("NOT DETERMINED")
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization() //얼럿 띄우기
-        case .restricted, .denied:
-            print("DENIED")
-            setRegionAndAnnotation(center: coornidateYDPcampus) //권한 거부시 취업사관학교 위치 업데이트
-            showRequestLocationServiceAlert() //설정가서 허용유도
-        case .authorizedWhenInUse:
-            print("WHEN IN USE")
-            locationManager.startUpdatingLocation() //권한허용시 사용자 위치 업데이트
-        default: print("DEFAULT")
-        }
-    }
-    
-    //위치권한 거부시 얼럿
-    func showRequestLocationServiceAlert() {
-      let requestLocationServiceAlert = UIAlertController(title: "위치정보 이용", message: "위치 서비스를 사용할 수 없습니다. 기기의 '설정>개인정보 보호'에서 위치 서비스를 켜주세요.", preferredStyle: .alert)
-      let goSetting = UIAlertAction(title: "설정으로 이동", style: .destructive) { _ in
-          if let appSetting = URL(string: UIApplication.openSettingsURLString) { //"설정으로 이동"눌렀을 때 디바이스 설정메뉴로 이동하도록 액션 추가
-              UIApplication.shared.open(appSetting)
-          }
-      }
-      let cancel = UIAlertAction(title: "취소", style: .default)
-      requestLocationServiceAlert.addAction(cancel)
-      requestLocationServiceAlert.addAction(goSetting)
-      
-      present(requestLocationServiceAlert, animated: true, completion: nil)
-    }
-}
 
-//2. 위치권한 관련 프로토콜
-extension TheaterViewController: CLLocationManagerDelegate {
-    //위치권한허용(사용자 위치 데이터 수신 성공한 경우)
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(#function, locations)
-        if let coordinate = locations.last?.coordinate {
-            setRegionAndAnnotation(center: coordinate) //위치권한 허용해서 받은 좌표정보 사용하여 지도중심 표시
+        annotation.coordinate = center
+        annotation.title = location[1]
+        mapView.addAnnotation(annotation)
+    }
+    
+    func setRegionAndAnnotation3() {
+        let location = theaterInfo.mapAnnotations.filter { $0.type == "CGV" }.map { $0.location }
+        let latitude = theaterInfo.mapAnnotations.filter { $0.type == "CGV" }.map { $0.latitude }
+        let longitude = theaterInfo.mapAnnotations.filter { $0.type == "CGV" }.map { $0.longitude }
+
+        let annotation = MKPointAnnotation()
+        let center = CLLocationCoordinate2D(latitude: latitude[0], longitude: longitude[0])
+
+        annotation.coordinate = center
+        annotation.title = location[0]
+        mapView.addAnnotation(annotation)
+    }
+    
+    func showTheaterList() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let megabox = UIAlertAction(title: "메가박스", style: .default) { _ in
+            //mapView.removeAnnotation()
         }
-        locationManager.stopUpdatingLocation() //불필요한 위치정보 반복요청 중단
+        let lotte = UIAlertAction(title: "롯데시네마", style: .default) { _ in
+            //mapView.removeAnnotation()
+        }
+        let cgv = UIAlertAction(title: "CGV", style: .default) { _ in
+            //mapView.removeAnnotation()
+        }
+        let allTheater = UIAlertAction(title: "전체보기", style: .default) { _ in
+            
+        }
+                                  
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        actionSheet.addAction(megabox)
+        actionSheet.addAction(lotte)
+        actionSheet.addAction(cgv)
+        actionSheet.addAction(allTheater)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true)
     }
-    
-    //위치권한 미허용(사용자 위치 데이터 수신 실패한 경우)
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(#function)
-    }
-    
-    //위치권한 변경시
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) { //iOS14+
-        checkUserDeviceLocationServiceAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkUserDeviceLocationServiceAuthorization()
-    }
+
 }
