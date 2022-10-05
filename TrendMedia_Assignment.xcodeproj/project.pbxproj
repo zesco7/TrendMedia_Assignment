@@ -13,6 +13,7 @@
 		9836190828BEE18D00722EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9836190628BEE18D00722EC0 /* Main.storyboard */; };
 		9836190A28BEE19200722EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9836190928BEE19200722EC0 /* Assets.xcassets */; };
 		9836190D28BEE19200722EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9836190B28BEE19200722EC0 /* LaunchScreen.storyboard */; };
+		9895C5E328ED904F00127448 /* ShoppingContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9895C5E228ED904F00127448 /* ShoppingContentsViewController.swift */; };
 		98B3CA3E28C1977700A15470 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3CA3D28C1977700A15470 /* TrendTableViewController.swift */; };
 		98C381A828C04207003CFB09 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98C381A728C04207003CFB09 /* Shopping.storyboard */; };
 		98C381AA28C04239003CFB09 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C381A928C04239003CFB09 /* ShoppingTableViewController.swift */; };
@@ -56,6 +57,7 @@
 		9836190928BEE19200722EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9836190C28BEE19200722EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9836190E28BEE19200722EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9895C5E228ED904F00127448 /* ShoppingContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingContentsViewController.swift; sourceTree = "<group>"; };
 		98B3CA3D28C1977700A15470 /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
 		98C381A728C04207003CFB09 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
 		98C381A928C04239003CFB09 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				98C381A728C04207003CFB09 /* Shopping.storyboard */,
 				98C381A928C04239003CFB09 /* ShoppingTableViewController.swift */,
 				98C381AC28C0426E003CFB09 /* ShoppingTableViewCell.swift */,
+				9895C5E228ED904F00127448 /* ShoppingContentsViewController.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				98F766B328BFA02D00405BBC /* TrendViewController.swift in Sources */,
 				98C6B40128DD509100600FC5 /* TheaterModel.swift in Sources */,
 				98C381B828C07033003CFB09 /* Movie.swift in Sources */,
+				9895C5E328ED904F00127448 /* ShoppingContentsViewController.swift in Sources */,
 				98F766A328BEE3B000405BBC /* CodingTipViewController.swift in Sources */,
 				98C381BD28C0DF6C003CFB09 /* RecommendationCollectionViewController.swift in Sources */,
 				98F766B128BF9FEC00405BBC /* SearchViewController.swift in Sources */,

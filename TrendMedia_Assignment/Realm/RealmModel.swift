@@ -20,7 +20,7 @@ class ShoppingList: Object {
     //3.초기화
     convenience init(checkbox: Bool?, shoppingContents: String, favorite: Bool?) {
         self.init()
-        self.checkbox = false
+        self.checkbox = true
         self.shoppingContents = shoppingContents
         self.favorite = false
     }
