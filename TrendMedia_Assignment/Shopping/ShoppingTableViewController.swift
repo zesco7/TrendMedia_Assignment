@@ -30,8 +30,6 @@ class ShoppingTableViewController: UITableViewController {
     @IBOutlet weak var shoppingListTextField: UITextField!
     @IBOutlet weak var shoppingListAddButton: UIButton!
     
-    //var shoppingList = ["그립톡 구매하기", "사이다 구매", "아이폰 최저가 알아보기", "양말"]
-    
     //1. Realm파일 저장경로 설정
     let localRealm = try! Realm()
     
@@ -93,10 +91,19 @@ class ShoppingTableViewController: UITableViewController {
         let shoppingList = ShoppingList(checkbox: false, shoppingContents: shoppingListTextField.text!, favorite: false)
         
         //Realm파일 테이블 레코드 추가
-        try! localRealm.write {
-            localRealm.add(shoppingList)
+        
+        do {
+            try localRealm.write {
+                localRealm.add(shoppingList)
+            }
+        } catch let error {
+            print(error)
+        }
+        
+        if let image = tvcell.shoppingImage.image {
+            saveImageToDocument(fileName: "\(shoppingList.objectId).jpg", image: image)
             print("Realm Success")
-            tableView.reloadData() //
+            tableView.reloadData()
         }
     }
     
@@ -157,6 +164,9 @@ class ShoppingTableViewController: UITableViewController {
         cell.starButton.tintColor = .black
         cell.starButton.tag = indexPath.row
         
+        let thumbnail = indexPath.row % 2 == 0 ? "괴물" : "왕의남자"
+        cell.shoppingImage.image = UIImage(named: thumbnail) //쇼핑목록 추가시 랜덤으로 이미지보여주기
+        
         return cell
     }
     
@@ -193,10 +203,18 @@ class ShoppingTableViewController: UITableViewController {
         let shoppingList2 = ShoppingList(checkbox: false, shoppingContents: shoppingListTextField.text!, favorite: false)
         
         //Realm파일 테이블 레코드 추가
-        try! localRealm.write {
-            localRealm.add(shoppingList2)
+        do {
+            try localRealm.write {
+                localRealm.add(shoppingList2)
+            }
+        } catch let error {
+            print(error)
+        }
+        
+        if let image = tvcell.shoppingImage.image {
+            saveImageToDocument(fileName: "\(shoppingList2.objectId).jpg", image: image)
             print("Realm Success")
-            tableView.reloadData() //
+            tableView.reloadData()
         }
     }
 }

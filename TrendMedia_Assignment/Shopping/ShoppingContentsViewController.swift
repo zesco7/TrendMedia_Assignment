@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ShoppingContentsViewController: UIViewController {
     static var identifier = "ShoppingContentsViewController"
@@ -13,6 +14,8 @@ class ShoppingContentsViewController: UIViewController {
     @IBOutlet weak var checkboxTitleLabel: UILabel!
     @IBOutlet weak var contentsTitleLabel: UILabel!
     @IBOutlet weak var favoriteTitleLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var checkboxLabel: UILabel!
     @IBOutlet weak var contentsLabel: UILabel!
@@ -22,6 +25,15 @@ class ShoppingContentsViewController: UIViewController {
     var contents: String?
     var favorite: Bool?
     
+    let localRealm = try! Realm()
+    
+    var data: Results<ShoppingList>! {
+        didSet {
+            tableView.reloadData()
+            print("Data Changed")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +41,10 @@ class ShoppingContentsViewController: UIViewController {
         checkboxTitleLabel.text = "체크박스 선택여부(T/F)"
         contentsTitleLabel.text = "내용"
         favoriteTitleLabel.text = "즐겨찾기 선택여부(T/F)"
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ShoppingContentsTableViewCell.self, forCellReuseIdentifier: "ShoppingContentsTableViewCell")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,3 +81,20 @@ class ShoppingContentsViewController: UIViewController {
         favoriteLabel.backgroundColor = .yellow
     }
 }
+
+extension ShoppingContentsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingContentsTableViewCell.identifier, for: indexPath) as? ShoppingContentsTableViewCell else { return UITableViewCell() }
+        
+        cell.thumbnail.image = loadImageFromDocument2(fileName: "\(data[indexPath.row].objectId).jpg")
+        
+        return cell
+    }
+    
+    
+}
+ 
