@@ -25,7 +25,7 @@ import RealmSwift
  */
 
 class ShoppingTableViewController: UITableViewController {
-    
+    static var identifier = "ShoppingTableViewController"
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var shoppingListTextField: UITextField!
     @IBOutlet weak var shoppingListAddButton: UIButton!
@@ -48,6 +48,7 @@ class ShoppingTableViewController: UITableViewController {
         hideKeyboard()
         navigationItem.title = "쇼핑"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: #selector(arrangementBarButtonClicked))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "백업/복구", style: .plain, target: self, action: #selector(goToBackupPage))
         
         headerViewAttribute()
         shoppingListTextFieldAttribute()
@@ -59,6 +60,14 @@ class ShoppingTableViewController: UITableViewController {
         shoppingListArray = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "shoppingContents", ascending: true)
         print(shoppingListArray)
     }
+    @objc func goToBackupPage() {
+        //let vc = BackupViewController()으로 present하면 화면에 버튼안뜨는이유?
+        let sb = UIStoryboard(name: "Shopping", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier:  BackupViewController.identifier) as! BackupViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        //present(vc, animated: true)
+    }
+    
     @objc func arrangementBarButtonClicked() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let checkbox = UIAlertAction(title: "체크기준 정렬", style: .default) { _ in
@@ -100,11 +109,13 @@ class ShoppingTableViewController: UITableViewController {
             print(error)
         }
         
-        if let image = tvcell.shoppingImage.image {
-            saveImageToDocument(fileName: "\(shoppingList.objectId).jpg", image: image)
-            print("Realm Success")
-            tableView.reloadData()
-        }
+//        if let image = tvcell.shoppingImage.image {
+//            saveImageToDocument(fileName: "\(shoppingList.objectId).jpg", image: image)
+//            print("Realm Success")
+//            tableView.reloadData()
+//        }
+        tableView.reloadData()
+        view.endEditing(true)
     }
     
     func headerViewAttribute() {
@@ -172,7 +183,6 @@ class ShoppingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //셀클릭시 데이터전달+화면전환
-        if indexPath.row >= 0 {
             let sb = UIStoryboard(name: "Shopping", bundle: nil)
             let vc = sb.instantiateViewController(identifier: "ShoppingContentsViewController") as! ShoppingContentsViewController
             vc.checkbox = shoppingListArray[indexPath.row].checkbox
@@ -180,7 +190,6 @@ class ShoppingTableViewController: UITableViewController {
             vc.favorite = shoppingListArray[indexPath.row].favorite
             
             self.navigationController?.pushViewController(vc, animated: true)
-        }
         print(#function)
     }
  
@@ -211,11 +220,11 @@ class ShoppingTableViewController: UITableViewController {
             print(error)
         }
         
-        if let image = tvcell.shoppingImage.image {
-            saveImageToDocument(fileName: "\(shoppingList2.objectId).jpg", image: image)
-            print("Realm Success")
-            tableView.reloadData()
-        }
+//        if let image = tvcell.shoppingImage.image {
+//            saveImageToDocument(fileName: "\(shoppingList2.objectId).jpg", image: image)
+//            print("Realm Success")
+//            tableView.reloadData()
+//        }
     }
 }
 

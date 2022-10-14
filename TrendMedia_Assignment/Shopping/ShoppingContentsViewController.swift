@@ -44,7 +44,7 @@ class ShoppingContentsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ShoppingContentsTableViewCell.self, forCellReuseIdentifier: "ShoppingContentsTableViewCell")
-        
+        fetchRealm()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +53,9 @@ class ShoppingContentsViewController: UIViewController {
         favoriteLabel.text = "\(favorite!)"
     }
     
+    func fetchRealm() {
+        data = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "checkbox", ascending: true)
+    }
     func labelAttribute() {
         checkboxTitleLabel?.numberOfLines = 0
         contentsTitleLabel?.numberOfLines = 0
@@ -84,14 +87,14 @@ class ShoppingContentsViewController: UIViewController {
 
 extension ShoppingContentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingContentsTableViewCell.identifier, for: indexPath) as? ShoppingContentsTableViewCell else { return UITableViewCell() }
         
-        cell.thumbnail.image = loadImageFromDocument2(fileName: "\(data[indexPath.row].objectId).jpg")
-        
+        //cell.thumbnail.image = loadImageFromDocument2(fileName: "\(data[indexPath.row].objectId).jpg")
+        print("\(data[indexPath.row].objectId).jpg")
         return cell
     }
     

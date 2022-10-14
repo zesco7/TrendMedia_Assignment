@@ -46,6 +46,10 @@ extension UITableViewController {
 }
 
 extension UIViewController {
+    func documentDirectoryPath() -> URL? {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return documentDirectory
+    }    
     
     func saveImageToDocument2(fileName: String, image: UIImage) {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
