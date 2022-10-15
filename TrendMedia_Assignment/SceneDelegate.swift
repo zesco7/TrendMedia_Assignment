@@ -21,6 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //UserDefaults.standard.set(false, forKey: "First") //SceneDelegate 파일이 아닌 다른 파일에 배치해야 한다.
     
         guard let scene = (scene as? UIWindowScene) else { return } //scene은 현재 화면에 보이는 부분을 의미함
+        
+//        let vc = CalendarViewController()
+//        window = UIWindow(windowScene: scene)
+//        window?.rootViewController = vc
+//        window?.makeKeyAndVisible()
+        
+        
        // window = UIWindow(windowScene: scene)
         /*
         if UserDefaults.standard.bool(forKey: "First") {

@@ -25,7 +25,7 @@ class ShoppingContentsViewController: UIViewController {
     var contents: String?
     var favorite: Bool?
     
-    let localRealm = try! Realm()
+    let repository = ShoppingRepository()
     
     var data: Results<ShoppingList>! {
         didSet {
@@ -54,8 +54,9 @@ class ShoppingContentsViewController: UIViewController {
     }
     
     func fetchRealm() {
-        data = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "checkbox", ascending: true)
+        data = repository.fetchSorting("checkbox", ascending: true)
     }
+    
     func labelAttribute() {
         checkboxTitleLabel?.numberOfLines = 0
         contentsTitleLabel?.numberOfLines = 0
@@ -97,7 +98,5 @@ extension ShoppingContentsViewController: UITableViewDelegate, UITableViewDataSo
         print("\(data[indexPath.row].objectId).jpg")
         return cell
     }
-    
-    
 }
  

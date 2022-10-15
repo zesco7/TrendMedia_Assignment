@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import FSCalendar
 
 /*쇼핑목록리스트 포인트
  -. 테이블뷰 row끼리 간격을 줄 수 없으니 view위에 객체를 얹어서 간격이 있는 것처럼 보이게 만들어 준다.
@@ -30,8 +31,8 @@ class ShoppingTableViewController: UITableViewController {
     @IBOutlet weak var shoppingListTextField: UITextField!
     @IBOutlet weak var shoppingListAddButton: UIButton!
     
-    //1. Realm파일 저장경로 설정
-    let localRealm = try! Realm()
+    //1. ShoppingRepository 인스턴스로 Realm파일 저장경로 접근
+    let repository = ShoppingRepository()
     
     var shoppingListArray : Results<ShoppingList>! {
         didSet {
@@ -42,6 +43,10 @@ class ShoppingTableViewController: UITableViewController {
     var dummy = Array<String>()
     
     let tvcell = ShoppingTableViewCell()
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,11 +60,19 @@ class ShoppingTableViewController: UITableViewController {
         shoppingListAddButtonAttribute()
         shoppingListAddButton.addTarget(self, action: #selector(shoppingListAddButtonClicked), for: .touchUpInside) //추가버튼 클릭시 쇼핑목록 생성 구현
         
-        print("Realm is located at:", localRealm.configuration.fileURL!)
+        print("Realm is located at:", repository.localRealm.configuration.fileURL!)
         
-        shoppingListArray = localRealm.objects(ShoppingList.self).sorted(byKeyPath: "shoppingContents", ascending: true)
+        shoppingListArray = repository.fetchSorting("shoppingContents", ascending: true)
+
         print(shoppingListArray)
     }
+    
+    @IBAction func showShoppingListOnCalendar(_ sender: UIDatePicker) {
+        
+    }
+    
+    
+    
     @objc func goToBackupPage() {
         //let vc = BackupViewController()으로 present하면 화면에 버튼안뜨는이유?
         let sb = UIStoryboard(name: "Shopping", bundle: nil)
@@ -71,15 +84,15 @@ class ShoppingTableViewController: UITableViewController {
     @objc func arrangementBarButtonClicked() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let checkbox = UIAlertAction(title: "체크기준 정렬", style: .default) { _ in
-            self.shoppingListArray = self.localRealm.objects(ShoppingList.self).sorted(byKeyPath: "checkbox", ascending: false)
+            self.shoppingListArray = self.repository.fetchSorting("checkbox", ascending: false)
             print("CHECKBOX CLICKED")
         }
         let title = UIAlertAction(title: "제목 순 정렬", style: .default) { _ in
-            self.shoppingListArray = self.localRealm.objects(ShoppingList.self).sorted(byKeyPath: "shoppingContents", ascending: true)
+            self.shoppingListArray = self.repository.fetchSorting("shoppingContents", ascending: true)
             print("TITLE CLICKED")
         }
         let favorite = UIAlertAction(title: "즐겨찾기 순 정렬", style: .default) { _ in
-            self.shoppingListArray = self.localRealm.objects(ShoppingList.self).sorted(byKeyPath: "favorite", ascending: false)
+            self.shoppingListArray = self.repository.fetchSorting("favorite", ascending: false)
             print("FAVORITE CLICKED")
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in
@@ -102,8 +115,8 @@ class ShoppingTableViewController: UITableViewController {
         //Realm파일 테이블 레코드 추가
         
         do {
-            try localRealm.write {
-                localRealm.add(shoppingList)
+            try repository.localRealm.write {
+                repository.localRealm.add(shoppingList)
             }
         } catch let error {
             print(error)
@@ -146,10 +159,14 @@ class ShoppingTableViewController: UITableViewController {
     //swipe제거 기능 추가
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            try! localRealm.write {
-                localRealm.delete(shoppingListArray[indexPath.row]) //indexPath에 맞는 Realm레코드 삭제
+            do {
+            try repository.localRealm.write {
+                repository.localRealm.delete(shoppingListArray[indexPath.row]) //indexPath에 맞는 Realm레코드 삭제
                 print("Realm Deleted")
                 tableView.reloadData()
+            }
+            } catch {
+                print("ERROR")
             }
         }
     }
@@ -194,16 +211,24 @@ class ShoppingTableViewController: UITableViewController {
     }
  
     @IBAction func checkboxButtonClicked(_ sender: UIButton) {
-        try! self.localRealm.write {
+        do {
+        try self.repository.localRealm.write {
         shoppingListArray[sender.tag].checkbox = !shoppingListArray[sender.tag].checkbox!
             tableView.reloadData()
+        }
+        } catch {
+            print("ERROR")
         }
     }
     
     @IBAction func starButtonClicked(_ sender: UIButton) {
-        try! self.localRealm.write {
+        do {
+        try self.repository.localRealm.write {
         shoppingListArray[sender.tag].favorite = !shoppingListArray[sender.tag].favorite!
             tableView.reloadData()
+        }
+        } catch {
+            print("ERROR")
         }
     }
     
@@ -213,8 +238,8 @@ class ShoppingTableViewController: UITableViewController {
         
         //Realm파일 테이블 레코드 추가
         do {
-            try localRealm.write {
-                localRealm.add(shoppingList2)
+            try repository.localRealm.write {
+                repository.localRealm.add(shoppingList2)
             }
         } catch let error {
             print(error)

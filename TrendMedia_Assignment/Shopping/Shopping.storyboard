@@ -17,14 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="OfZ-8B-SlP">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PU7-4M-QSX">
-                                    <rect key="frame" x="10" y="10" width="394" height="59"/>
+                                    <rect key="frame" x="10" y="10" width="394" height="467"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLo-dm-fGV">
-                                            <rect key="frame" x="5" y="10" width="289" height="39"/>
+                                            <rect key="frame" x="5" y="407" width="289" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="KLG-8p-w1H"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -32,23 +35,32 @@
                                             </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hZ-6j-CjQ">
-                                            <rect key="frame" x="299" y="10" width="90" height="39"/>
+                                            <rect key="frame" x="299" y="407" width="90" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="AoI-JQ-i8u"/>
+                                                <constraint firstAttribute="height" constant="50" id="LNP-x9-Bal"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="추가"/>
                                         </button>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="V6Y-pd-WB9">
+                                            <rect key="frame" x="5" y="5" width="384" height="392"/>
+                                            <connections>
+                                                <action selector="showShoppingListOnCalendar:" destination="seI-DL-APk" eventType="valueChanged" id="Abx-vm-9K7"/>
+                                            </connections>
+                                        </datePicker>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="3hZ-6j-CjQ" firstAttribute="top" secondItem="PU7-4M-QSX" secondAttribute="top" constant="10" id="2cG-bR-YsF"/>
                                         <constraint firstAttribute="trailing" secondItem="3hZ-6j-CjQ" secondAttribute="trailing" constant="5" id="DBJ-HY-dcO"/>
+                                        <constraint firstAttribute="trailing" secondItem="V6Y-pd-WB9" secondAttribute="trailing" constant="5" id="Gfn-ch-LeY"/>
                                         <constraint firstAttribute="bottom" secondItem="ZLo-dm-fGV" secondAttribute="bottom" constant="10" id="Nm2-mk-q4d"/>
-                                        <constraint firstItem="ZLo-dm-fGV" firstAttribute="top" secondItem="PU7-4M-QSX" secondAttribute="top" constant="10" id="Rf2-bQ-nDb"/>
                                         <constraint firstAttribute="bottom" secondItem="3hZ-6j-CjQ" secondAttribute="bottom" constant="10" id="Uup-qr-z4Q"/>
+                                        <constraint firstItem="ZLo-dm-fGV" firstAttribute="top" secondItem="V6Y-pd-WB9" secondAttribute="bottom" constant="10" id="ewa-gm-mFu"/>
                                         <constraint firstItem="ZLo-dm-fGV" firstAttribute="leading" secondItem="PU7-4M-QSX" secondAttribute="leading" constant="5" id="kD2-Yx-6bq"/>
+                                        <constraint firstItem="V6Y-pd-WB9" firstAttribute="top" secondItem="PU7-4M-QSX" secondAttribute="top" constant="5" id="nao-GX-82N"/>
                                         <constraint firstItem="3hZ-6j-CjQ" firstAttribute="leading" secondItem="ZLo-dm-fGV" secondAttribute="trailing" constant="5" id="oUu-uO-0pU"/>
+                                        <constraint firstItem="V6Y-pd-WB9" firstAttribute="leading" secondItem="PU7-4M-QSX" secondAttribute="leading" constant="5" id="rMh-mr-qT8"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -62,7 +74,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" rowHeight="92" id="XYg-pj-x8h" customClass="ShoppingTableViewCell" customModule="TrendMedia_Assignment" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="123.5" width="414" height="92"/>
+                                <rect key="frame" x="0.0" y="531.5" width="414" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XYg-pj-x8h" id="3LD-N0-chr">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
@@ -149,6 +161,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="lcH-Zx-mXM"/>
                     <connections>
+                        <outlet property="datePicker" destination="V6Y-pd-WB9" id="q08-lP-xZ5"/>
                         <outlet property="headerView" destination="PU7-4M-QSX" id="SfB-8n-QMK"/>
                         <outlet property="shoppingListAddButton" destination="3hZ-6j-CjQ" id="78I-Xo-K49"/>
                         <outlet property="shoppingListTextField" destination="ZLo-dm-fGV" id="sML-F8-414"/>
@@ -361,6 +374,10 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="MpV-vp-t8s">
+                                <rect key="frame" x="32" y="222" width="334" height="371"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eyE-6e-xJN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -372,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5M-tp-Rrr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4193" y="55"/>
+            <point key="canvasLocation" x="4192.753623188406" y="54.910714285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kIS-6L-lLX">
